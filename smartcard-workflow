@@ -1,0 +1,80 @@
+# SmartCard Initialization Workflow
+
+$ gpg --card-edit # Edit Personal Info on Smartcard
+
+admin  # turn on admin mode
+
+passwd # change the admin pin, user pin, and reset code
+3 # Choose Option 3 - change the Admin PIN
+$OLD_ADMIN # Enter the old Admin PIN
+$ADMIN # Enter the new Admin PIN twice
+$ADMIN 
+
+1 # Choose Option 1 - change the User Pin
+$OLD_PIN # Enter the old PIN
+$PIN # Enter the new PIN 
+
+4 # Choose Option 4 - change the Reset Code
+$PIN # Enter the PIN
+$RESET # Enter the new Reset Code 
+
+Q # Quit passwd mode
+
+name # Change the name on the card
+$SMARTCARD_SURNAME
+$SMARTCARD_NAME
+
+lang # Change the language preference
+$SMARTCARD_LANG
+
+login # Change the login name
+$SMARTCARD_LOGIN
+
+quit
+
+# Move The Generated Keys to the Smartcard
+gpg --edit-key $FPR 
+
+keytocard 	# Move the master key to the smartcard
+1 			# Select Signature Key
+[y] 		# Such a key may or may not already exist 
+			# on the smartcard. Answer 'y' to replace
+			# the existing key. How to know?
+$PASSWORD 	# Enter passphrase to unlock the sec key
+$ADMIN    	# Enter the admin pin
+save	  	# save and quit
+
+# Repeat this for the signing, encryption and authentication subkeys on another card (or on the same card depending on the user's preference) 
+Are keys always listed in the same order they were created [S E A]?
+
+gpg --edit-key $FPR 
+
+key 1		# Select the Signing Subkey 
+keytocard 	# Move the signing subkey to the smartcard
+1 			# Select Signature Key for storage
+[y] 		# Such a key may or may not already exist 
+			# on the smartcard. Answer 'y' to replace
+			# the existing key. How to know?
+$PASSWORD 	# Enter passphrase to unlock the sec key
+$ADMIN    	# Enter the admin pin
+
+key 1		# Deselect the Signing Subkey
+key 2		# Select the Encryption Subkey
+keytocard 	# Move the encryption key to the smartcard
+2 			# Select Encryption for storage
+[y] 		# Such a key may or may not already exist 
+			# on the smartcard. Answer 'y' to replace
+			# the existing key. How to know?
+$PASSWORD 	# Enter passphrase to unlock the sec key
+$ADMIN    	# Enter the admin pin
+
+key 2		# Deselect the Encryption Subkey
+key 3		# Select the Authentication Subkey
+keytocard 	# Move the auth subkey to the smartcard
+3			# Select Authentication for storage
+[y] 		# Such a key may or may not already exist 
+			# on the smartcard. Answer 'y' to replace
+			# the existing key. How to know?
+$PASSWORD 	# Enter passphrase to unlock the sec key
+$ADMIN    	# Enter the admin pin
+save	  	# save and quit

@@ -31,5 +31,8 @@ then
 	gpg2 --quick-addkey $FPR $AUTH_SUBKEY auth $AUTH_SUBKEY_EXPIRY;
 fi
 
-# Print the Paper Key and Revocation certificate, time stamped with fingerprint.
+# Print the Paper Key and (todo)Revocation certificate, time stamped with fingerprint.
 gpg-key2ps -s -p a4 $PRIMARY_UID > ~/paper-key.ps
+
+# Grab Smartcard Initialization 
+. smartcard-init.sh
