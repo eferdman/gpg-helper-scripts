@@ -38,7 +38,7 @@ fi
 
 # SIGNING SUBKEY
 if (whiptail --yesno "Would you like to add an additional signing subkey?" 8 78 --title "Additional Subkeys") then
-        SIGN_SUBKEY=$(whiptail --inputbox "Please specify the algorithm for the encryption key, followed by length, if applicable.  Examples include rsa2048, ed25519 for ECC, or other ECC curves" 15 78 rsa2048 --title "Additional Signing Subkey Algorithm" 3>&1 1>&2 2>&3)
+	SIGN_SUBKEY=$(whiptail --inputbox "Please specify the algorithm for the encryption key, followed by length, if applicable.  Examples include rsa2048, ed25519 for ECC, or other ECC curves" 15 78 rsa2048 --title "Additional Signing Subkey Algorithm" 3>&1 1>&2 2>&3)
 	SIGN_SUBKEY_EXPIRY=$(whiptail --inputbox "Please specify how long the key should be valid.\n      0 = key does not expire\n    <n> = key expires in n days\n   <n>w = key expires in n weeks\n   <n>m = key expires in n months\n   <n>y = key expires in n years" 15 78 1y --title "Additional Signing Subkey Expiration" 3>&1 1>&2 2>&3)
 fi
 
