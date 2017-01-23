@@ -19,10 +19,14 @@ MASTER_EXPIRY=$(whiptail --inputbox "$EXPIRY_TEXT_EN" 15 78 $MASTER_EXPIRY_DEFAU
 SUBKEY_ALGO=$(whiptail --inputbox "$SUBKEY_ALGO_TEXT_EN" 15 78 $SUBKEY_ALGO_DEFAULT --title "$SUBKEY_ALGO_TITLE_EN" 3>&1 1>&2 2>&3)
 SUBKEY_EXPIRY=$(whiptail --inputbox "$EXPIRY_TEXT_EN" 15 78 $SUBKEY_EXPIRY_DEFAULT --title "$SUBKEY_EXPIRY_TITLE_EN" 3>&1 1>&2 2>&3)
 
-# PASSWORD
+# PASSWORD: Validate that password is 12 chars and confirm password
 while true
 do
-	PASSWORD=$(whiptail --passwordbox "$PASSWORD_TEXT_EN" 8 78 --title "$PASSWORD_TITLE_EN" 3>&1 1>&2 2>&3)
+	while true
+	do
+		PASSWORD=$(whiptail --passwordbox "$PASSWORD_TEXT_EN" 8 78 --title "$PASSWORD_TITLE_EN" 3>&1 1>&2 2>&3)
+		[ ${#PASSWORD} -ge 12 ] && break
+	done
 	CONF_PASSWORD=$(whiptail --passwordbox "$CONF_PASSWORD_TEXT_EN" 8 78 --title "$CONF_PASSWORD_TITLE_EN" 3>&1 1>&2 2>&3)
 	[ $PASSWORD = $CONF_PASSWORD ] && break
 done
