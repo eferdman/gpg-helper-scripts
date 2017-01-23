@@ -5,45 +5,42 @@
 set -a
 set -e
 
-# UIDS
-PRIMARY_UID=$(whiptail --inputbox "Please enter your full name and email in the following format:\n Joe Tester <joe@tester.com>" 8 78 --title "Primary UID" 3>&1 1>&2 2>&3)
+. gen_key_strings.sh
 
-ADD_UIDS=$(whiptail --inputbox "Please enter any additional uids as a comma separated list.\nExample:\n  Barbara Streisand <barbara@streisand.com>, Barbara Streisand <barbara@beaches.com>" 15 78 --title "Additional UIDs" 3>&1 1>&2 2>&3)
+# UIDS
+PRIMARY_UID=$(whiptail --inputbox "$PRIMARY_UID_TEXT_EN" 8 78 --title "$PRIMARY_UID_TITLE_EN" 3>&1 1>&2 2>&3)
+ADD_UIDS=$(whiptail --inputbox "$ADD_UIDS_TEXT_EN" 15 78 --title "$ADD_UIDS_TITLE_EN" 3>&1 1>&2 2>&3)
 
 # MASTER KEY
-MASTER_KEY_ALGO=$(whiptail --inputbox "Please specify the algorithm for the primary key, followed by the desired key length, if applicable. Examples include rsa4096, dsa2048, ed25519 (or other ECC curves) for an ECC key, or accept the default." 15 78 rsa2048 --title "Primary Key Type" 3>&1 1>&2 2>&3)
-
-MASTER_EXPIRY=$(whiptail --inputbox "Please specify how long the key should be valid.\n      0 = key does not expire\n    <n> = key expires in n days\n   <n>w = key expires in n weeks\n   <n>m = key expires in n months\n   <n>y = key expires in n years" 15 78 1y --title "Primary Key Expiration" 3>&1 1>&2 2>&3)
+MASTER_KEY_ALGO=$(whiptail --inputbox "$MASTER_KEY_ALGO_TEXT_EN" 15 78 $MASTER_KEY_ALGO_DEFAULT --title "$MASTER_KEY_ALGO_TITLE_EN" 3>&1 1>&2 2>&3)
+MASTER_EXPIRY=$(whiptail --inputbox "$EXPIRY_TEXT_EN" 15 78 $MASTER_EXPIRY_DEFAULT --title "$MASTER_EXPIRY_TITLE_EN" 3>&1 1>&2 2>&3)
 
 # SECONDARY KEY
-SUBKEY_ALGO=$(whiptail --inputbox "Please specify the algorithm for the secondary (encryption) key, followed by length, if applicable. Examples include rsa2048, cv25519 for ECC, or other ECC curves" 15 78 rsa2048 --title "Encryption Subkey Algorithm" 3>&1 1>&2 2>&3)
-
-SUBKEY_EXPIRY=$(whiptail --inputbox "Please specify how long the key should be valid.\n      0 = key does not expire\n    <n> = key expires in n days\n   <n>w = key expires in n weeks\n   <n>m = key expires in n months\n   <n>y = key expires in n years" 15 78 6m --title "Subkey Expiration" 3>&1 1>&2 2>&3)
+SUBKEY_ALGO=$(whiptail --inputbox "$SUBKEY_ALGO_TEXT_EN" 15 78 $SUBKEY_ALGO_DEFAULT --title "$SUBKEY_ALGO_TITLE_EN" 3>&1 1>&2 2>&3)
+SUBKEY_EXPIRY=$(whiptail --inputbox "$EXPIRY_TEXT_EN" 15 78 $SUBKEY_EXPIRY_DEFAULT --title "$SUBKEY_EXPIRY_TITLE_EN" 3>&1 1>&2 2>&3)
 
 # PASSWORD
 while true
 do
-	PASSWORD=$(whiptail --passwordbox "Choose a Secure Password for Your Master Key" 8 78 --title "Password" 3>&1 1>&2 2>&3)
-	
-	CONF_PASSWORD=$(whiptail --passwordbox "Please Re-enter Your Password for Your Master Key" 8 78 --title "Password Confirmation" 3>&1 1>&2 2>&3)
-
+	PASSWORD=$(whiptail --passwordbox "$PASSWORD_TEXT_EN" 8 78 --title "$PASSWORD_TITLE_EN" 3>&1 1>&2 2>&3)
+	CONF_PASSWORD=$(whiptail --passwordbox "$CONF_PASSWORD_TEXT_EN" 8 78 --title "$CONF_PASSWORD_TITLE_EN" 3>&1 1>&2 2>&3)
 	[ $PASSWORD = $CONF_PASSWORD ] && break
 done
 
 # ENCRYPTION SUBKEY
-if (whiptail --yesno "Would you like to add an additional encryption subkey?" 8 78 --title "Additional Subkeys") then
-	ENCR_SUBKEY=$(whiptail --inputbox "Please specify the algorithm for the encryption key, followed by length, if applicable.  Examples include rsa2048, cv25519 for ECC, or other ECC curves" 15 78 rsa2048 --title "Additional Encryption Subkey Algorithm" 3>&1 1>&2 2>&3)
-	ENCR_SUBKEY_EXPIRY=$(whiptail --inputbox   "Please specify how long the key should be valid.\n      0 = key does not expire\n    <n> = key expires in n days\n   <n>w = key expires in n weeks\n   <n>m = key expires in n months\n   <n>y = key expires in n years" 15 78 1y --title "Additional Encryption Subkey Expiration" 3>&1 1>&2 2>&3)
+if (whiptail --yesno "$ENCR_SUBKEY_YESNO_TEXT_EN" 8 78 --title "$ENCR_SUBKEY_YESNO_TITLE_EN") then
+	ENCR_SUBKEY=$(whiptail --inputbox "$ENCR_SUBKEY_TEXT_EN" 15 78 $SUBKEY_ALGO_DEFAULT --title "$ENCR_SUBKEY_TITLE_EN" 3>&1 1>&2 2>&3)
+	ENCR_SUBKEY_EXPIRY=$(whiptail --inputbox "$EXPIRY_TEXT_EN" 15 78 $SUBKEY_EXPIRY_DEFAULT --title "$ENCR_SUBKEY_EXPIRY_TITLE_EN" 3>&1 1>&2 2>&3)
 fi
 
 # SIGNING SUBKEY
-if (whiptail --yesno "Would you like to add an additional signing subkey?" 8 78 --title "Additional Subkeys") then
-	SIGN_SUBKEY=$(whiptail --inputbox "Please specify the algorithm for the encryption key, followed by length, if applicable.  Examples include rsa2048, ed25519 for ECC, or other ECC curves" 15 78 rsa2048 --title "Additional Signing Subkey Algorithm" 3>&1 1>&2 2>&3)
-	SIGN_SUBKEY_EXPIRY=$(whiptail --inputbox "Please specify how long the key should be valid.\n      0 = key does not expire\n    <n> = key expires in n days\n   <n>w = key expires in n weeks\n   <n>m = key expires in n months\n   <n>y = key expires in n years" 15 78 1y --title "Additional Signing Subkey Expiration" 3>&1 1>&2 2>&3)
+if (whiptail --yesno "$SIGN_SUBKEY_YESNO_TEXT_EN" 8 78 --title "$SIGN_SUBKEY_YESNO_TITLE_EN") then
+	SIGN_SUBKEY=$(whiptail --inputbox "$SIGN_SUBKEY_TEXT_EN" 15 78 $SUBKEY_ALGO_DEFAULT --title "$SIGN_SUBKEY_TITLE_EN" 3>&1 1>&2 2>&3)
+	SIGN_SUBKEY_EXPIRY=$(whiptail --inputbox "$EXPIRY_TEXT_EN" 15 78 $SUBKEY_EXPIRY_DEFAULT --title "$SIGN_SUBKEY_EXPIRY_TITLE_EN" 3>&1 1>&2 2>&3)
 fi
 
 # AUTHENTICATION SUBKEY
-if (whiptail --yesno "Would you like to add an authentication subkey?" 8 78 --title "Additional Subkeys") then
-	AUTH_SUBKEY=$(whiptail --inputbox "Please specify the algorithm for the authentication subkey, followed by length, if applicable.  Examples include rsa2048, ed25519 for ECC, or other ECC curves" 15 78 rsa2048 --title "Authentication Subkey Algorithm" 3>&1 1>&2 2>&3)
-	AUTH_SUBKEY_EXPIRY=$(whiptail --inputbox "Please specify how long the key should be valid.\n      0 = key does not expire\n    <n> = key expires in n days\n   <n>w = key expires in n weeks\n   <n>m = key expires in n months\n   <n>y = key expires in n years" 15 78 1y --title "Authentication Subkey Expiration" 3>&1 1>&2 2>&3)
+if (whiptail --yesno "$AUTH_SUBKEY_YESNO_TEXT_EN" 8 78 --title "$AUTH_SUBKEY_YESNO_TITLE_EN") then
+	AUTH_SUBKEY=$(whiptail --inputbox "$AUTH_SUBKEY_TEXT_EN" 15 78 $SUBKEY_ALGO_DEFAULT --title "$AUTH_SUBKEY_TITLE_EN" 3>&1 1>&2 2>&3)
+	AUTH_SUBKEY_EXPIRY=$(whiptail --inputbox "$EXPIRY_TEXT_EN" 15 78 $SUBKEY_EXPIRY_DEFAULT --title "$AUTH_SUBKEY_EXPIRY_TITLE_EN" 3>&1 1>&2 2>&3)
 fi
