@@ -1,0 +1,122 @@
+msgid "MASTER_KEY_ALGO_DEFAULT"
+msgstr "rsa4096"
+
+msgid "MASTER_EXPIRY_DEFAULT"
+msgstr "1y"
+
+msgid "SUBKEY_ALGO_DEFAULT"
+msgstr "rsa2048"
+
+msgid "SUBKEY_EXPIRY_DEFAULT"
+msgstr "6m"
+
+msgid "EXPIRY_TEXT"
+msgstr ""
+"Please specify how long the key should be valid.\n"
+"\t   0 = key does not expire\n"
+"\t <n> = key expires in n days\n"
+"\t<n>w = key expires in n weeks\n"
+"\t<n>m = key expires in n months\n"
+"\t<n>y = key expires in n years"
+
+msgid "PRIMARY_UID_TITLE"
+msgstr "Primary UID"
+
+msgid "PRIMARY_UID_TEXT"
+msgstr ""
+"Please enter your full name and email in the following format:"
+"Joe Tester <joe@tester.com>"
+
+msgid "ADD_UIDS_TITLE"
+msgstr "Additional UIDs"
+
+msgid "ADD_UIDS_TEXT"
+msgstr ""
+"Please enter any additional uids as a comma separated list."
+"Example:"
+"  Barbara Streisand <barbara@streisand.com>, Barbara Streisand <barbara@beaches.com>"
+
+msgid "MASTER_KEY_ALGO_TITLE"
+msgstr "Primary Key Algorithm"
+
+msgid "MASTER_KEY_ALGO_TEXT"
+msgstr ""
+"Please specify the algorithm for the primary key, followed by the desired key length, if applicable."
+"Examples include rsa4096, dsa2048, ed25519 (or other ECC curves) for an ECC key, or accept the default."
+
+msgid "MASTER_EXPIRY_TITLE"
+msgstr "Primary Key Expiration"
+
+msgid "SUBKEY_ALGO_TITLE"
+msgstr "Encryption Subkey Algorithm"
+
+msgid "SUBKEY_ALGO_TEXT"
+msgstr ""
+"Please specify the algorithm for the secondary (encryption) key, followed by length, if applicable."
+"Examples include rsa2048, cv25519 for ECC, or other ECC curves"
+
+msgid "SUBKEY_EXPIRY_TITLE"
+msgstr "Subkey Expiration"
+
+msgid "PASSWORD_TITLE"
+msgstr "Password"
+
+msgid "PASSWORD_TEXT"
+msgstr "Choose a Password for Your Master Key (must be a minimum of 12 characters)"
+
+msgid "CONF_PASSWORD_TITLE"
+msgstr "Password Confirmation"
+
+msgid "CONF_PASSWORD_TEXT"
+msgstr "Please Re-enter Your Password for Your Master Key"
+
+msgid "ENCR_SUBKEY_YESNO_TITLE"
+msgstr "Additional Encryption Subkey"
+
+msgid "ENCR_SUBKEY_YESNO_TEXT"
+msgstr "Would you like to add an additional encryption subkey?"
+
+msgid "ENCR_SUBKEY_TITLE"
+msgstr "Additional Encryption Subkey Algorithm"
+
+msgid "ENCR_SUBKEY_TEXT"
+msgstr ""
+"Please specify the algorithm for the encryption key, followed by length, if applicable."
+"Examples include rsa2048, cv25519 for ECC, or other ECC curves"
+
+msgid "ENCR_SUBKEY_EXPIRY_TITLE"
+msgstr "Additional Encryption Subkey Expiration"
+
+msgid "SIGN_SUBKEY_YESNO_TITLE"
+msgstr "Additional Signing Subkey"
+
+msgid "SIGN_SUBKEY_YESNO_TEXT"
+msgstr "Would you like to add an additional signing subkey?"
+
+msgid "SIGN_SUBKEY_TITLE"
+msgstr "Additional Signing Subkey Algorithm"
+
+msgid "SIGN_SUBKEY_TEXT"
+msgstr ""
+"Please specify the algorithm for the signing subkey, followed by length, if applicable. "
+"Examples include rsa2048, ed25519 for ECC, or other ECC curves."
+
+msgid "SIGN_SUBKEY_EXPIRY_TITLE"
+msgstr "Additional Signing Subkey Expiration"
+
+msgid "AUTH_SUBKEY_YESNO_TITLE"
+msgstr "Authentication Subkey"
+
+msgid "AUTH_SUBKEY_YESNO_TEXT"
+msgstr "Would you like to add an authentication subkey?"
+
+msgid "AUTH_SUBKEY_TITLE"
+msgstr "Authentication Subkey Algorithm"
+
+msgid "AUTH_SUBKEY_TEXT"
+msgstr ""
+"Please specify the algorithm for the authentication subkey, followed by length, if applicable."
+"Examples include rsa2048, ed25519 for ECC, or other ECC curves"
+
+msgid "AUTH_SUBKEY_EXPIRY_TITLE"
+msgstr "Authentication Subkey Expiration"
