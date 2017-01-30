@@ -41,7 +41,7 @@ msgstr "Primary Key Algorithm"
 
 msgid "MASTER_KEY_ALGO_TEXT"
 msgstr ""
-"Please specify the algorithm for the primary key, followed by the desired key length, if applicable."
+"Please specify the algorithm for the primary key, followed by the desired key length, if applicable. "
 "Examples include rsa4096, dsa2048, ed25519 (or other ECC curves) for an ECC key, or accept the default."
 
 msgid "MASTER_EXPIRY_TITLE"
@@ -52,7 +52,7 @@ msgstr "Encryption Subkey Algorithm"
 
 msgid "SUBKEY_ALGO_TEXT"
 msgstr ""
-"Please specify the algorithm for the secondary (encryption) key, followed by length, if applicable."
+"Please specify the algorithm for the secondary (encryption) key, followed by length, if applicable. "
 "Examples include rsa2048, cv25519 for ECC, or other ECC curves"
 
 msgid "SUBKEY_EXPIRY_TITLE"
@@ -81,7 +81,7 @@ msgstr "Additional Encryption Subkey Algorithm"
 
 msgid "ENCR_SUBKEY_TEXT"
 msgstr ""
-"Please specify the algorithm for the encryption key, followed by length, if applicable."
+"Please specify the algorithm for the encryption key, followed by length, if applicable. "
 "Examples include rsa2048, cv25519 for ECC, or other ECC curves"
 
 msgid "ENCR_SUBKEY_EXPIRY_TITLE"
@@ -115,7 +115,7 @@ msgstr "Authentication Subkey Algorithm"
 
 msgid "AUTH_SUBKEY_TEXT"
 msgstr ""
-"Please specify the algorithm for the authentication subkey, followed by length, if applicable."
+"Please specify the algorithm for the authentication subkey, followed by length, if applicable. "
 "Examples include rsa2048, ed25519 for ECC, or other ECC curves"
 
 msgid "AUTH_SUBKEY_EXPIRY_TITLE"
@@ -123,7 +123,7 @@ msgstr "Authentication Subkey Expiration"
 
 # SmartCard Strings
 
-msgid 'SMARTCARD_YESNO_TITLE'
+msgid "SMARTCARD_YESNO_TITLE"
 msgstr "Smart Card"
 
 msgid "SMARTCARD_YESNO_TEXT"
