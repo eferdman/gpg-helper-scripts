@@ -5,5 +5,5 @@
 set -e
 set -a 
 
-export TEXTDOMAINDIR=$HOME/pgp-helper-scripts/locale
+export TEXTDOMAINDIR=$HOME/gpg-helper-scripts/locale
 export TEXTDOMAIN=en
