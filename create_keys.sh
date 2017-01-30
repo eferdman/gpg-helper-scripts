@@ -1,6 +1,14 @@
 #!/bin/bash
+#
+# Generate primary and subkeys
 
 set -e
+
+# Load helper scripts
+. whiptail_helper.sh
+
+# Load environmental variables
+. init.sh
 
 # Grab the user's information and preferences
 . user-info.sh
