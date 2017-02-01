@@ -6,7 +6,7 @@ set -a
 set -e
 
 # keep this for testing
-. whiptail_helper.sh
+. whiptail/whiptail_helper.sh
 . init.sh
 
 # UIDS

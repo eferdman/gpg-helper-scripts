@@ -5,16 +5,16 @@
 set -e
 
 # Load helper scripts
-. whiptail_helper.sh
+. whiptail/whiptail_helper.sh
 
 # Load environmental variables
 . init.sh
 
 # Grab the user's information and preferences
-. user-info.sh
+. whiptail/gen_keys.sh
 
 echo "Generating the master key..."
-gpg2 --batch --passphrase $PASSWORD --pinentry-mode=loopback --quick-gen-key $PRIMARY_UID $MASTER_KEY_ALGO - $MASTER_EXPIRY
+gpg2 --batch --passphrase $PASSWORD --quick-gen-key $PRIMARY_UID $MASTER_KEY_ALGO - $MASTER_EXPIRY
 
 echo "Generating the secondary key..."
 FPR=$(gpg2 --with-colons --fingerprint | awk -F: '$1 == "fpr" {print $10;}')
@@ -46,7 +46,7 @@ gpg-key2ps -s -p a4 $PRIMARY_UID > ~/paper-key.ps
 # print ~/.gnupg/openpgp-revocs.d/$FPR.rev
 
 # Grab Smartcard Initialization 
-. smartcard-init.sh
+. whiptail/smartcard-init.sh
 
 # TODO: Initialize Smart Card
 
