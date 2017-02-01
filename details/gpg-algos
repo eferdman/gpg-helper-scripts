@@ -1,0 +1,47 @@
+GPG Algorithms and Usages 
+
+DSA
+Usages: Signing, Certification, Authentication
+Key Length: 768 - 3072 bits
+
+RSA
+Usages: Signing, Certification, Authentication and Encryption
+Key Length 1024 - 4096 bits
+
+ELG
+Usage: Encryption
+Key Length 1024 - 4096 bits
+
+ECDSA
+Usages: Signing, Certification and Authentication
+
+Possible curves (these are the abbreviations to use when running "--quick-gen-key"): 
+
+nistp256
+nistp384
+nistp521
+brainpoolP256r1
+brainpoolP384r1
+brainpoolP512r1
+secp256k1
+
+EDDSA 
+Usages: Signing, Certification and Authentication
+
+Possible curves:
+
+ed25519
+
+ECDH
+Usages: Encryption
+
+Possible curves:
+
+cv25519
+nistp256
+nistp384
+nistp521
+brainpoolP256r1
+brainpoolP384r1
+brainpoolP512r1
+secp256k1
