@@ -16,12 +16,15 @@ set -e
 echo "Generating the master key..."
 gpg2 --batch --passphrase $PASSWORD --quick-gen-key $PRIMARY_UID $MASTER_KEY_ALGO - $MASTER_EXPIRY
 
-echo "Generating the secondary key..."
-FPR=$(gpg2 --with-colons --fingerprint | awk -F: '$1 == "fpr" {print $10;}')
-gpg2 --quick-addkey $FPR $SUBKEY_ALGO encrypt $SUBKEY_EXPIRY
+# Set the primary UID
+./set_primary_uid.sh
 
 echo "Adding any additional UIDs..."
 python add-uids.py
+
+echo "Generating the secondary key..."
+FPR=$(gpg2 --with-colons --fingerprint | awk -F: '$1 == "fpr" {print $10;}')
+gpg2 --quick-addkey $FPR $SUBKEY_ALGO encrypt $SUBKEY_EXPIRY
 
 echo "Generating additional signing, encryption and authentication subkeys"
 if ! [ -z $SIGN_SUBKEY ];

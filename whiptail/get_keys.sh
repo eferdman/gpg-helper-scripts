@@ -5,10 +5,6 @@
 set -a
 set -e
 
-# keep this for testing
-. whiptail/whiptail_helper.sh
-. init.sh
-
 # UIDS
 whiptail_input "PRIMARY_UID" "PRIMARY_UID_TEXT" "PRIMARY_UID_TITLE" 
 whiptail_input "ADD_UIDS" "ADD_UIDS_TEXT" "ADD_UIDS_TITLE" 
