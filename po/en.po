@@ -24,7 +24,7 @@ msgstr "Primary UID"
 
 msgid "PRIMARY_UID_TEXT"
 msgstr ""
-"Please enter your full name and email in the following format:"
+"Please enter your full name and email in the following format: "
 "Joe Tester <joe@tester.com>"
 
 msgid "ADD_UIDS_TITLE"
@@ -32,7 +32,7 @@ msgstr "Additional UIDs"
 
 msgid "ADD_UIDS_TEXT"
 msgstr ""
-"Please enter any additional uids as a comma separated list."
+"Please enter any additional uids as a comma separated list. "
 "Example:"
 "  Barbara Streisand <barbara@streisand.com>, Barbara Streisand <barbara@beaches.com>"
 
@@ -41,8 +41,8 @@ msgstr "Primary Key Algorithm"
 
 msgid "MASTER_KEY_ALGO_TEXT"
 msgstr ""
-"Please specify the algorithm for the primary key, followed by the desired key length, if applicable. "
-"Examples include rsa4096, dsa2048, ed25519 (or other ECC curves) for an ECC key, or accept the default."
+"Please specify the algorithm for the primary key, followed by the desired key length, if applicable.\n\n"
+"Supported algorithms and key lengths are: dsa<768-3072>, rsa<1024-4096>, ed25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, secp256k1"
 
 msgid "MASTER_EXPIRY_TITLE"
 msgstr "Primary Key Expiration"
@@ -52,8 +52,8 @@ msgstr "Encryption Subkey Algorithm"
 
 msgid "SUBKEY_ALGO_TEXT"
 msgstr ""
-"Please specify the algorithm for the secondary (encryption) key, followed by length, if applicable. "
-"Examples include rsa2048, cv25519 for ECC, or other ECC curves"
+"Please specify the algorithm for the secondary (encryption) key, followed by length, if applicable.\n\n"
+"Supported algorithms and key lengths are: rsa<1024-4096>, elg<1024-4096>,  cv25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, and secp256k1"
 
 msgid "SUBKEY_EXPIRY_TITLE"
 msgstr "Subkey Expiration"
@@ -81,8 +81,8 @@ msgstr "Additional Encryption Subkey Algorithm"
 
 msgid "ENCR_SUBKEY_TEXT"
 msgstr ""
-"Please specify the algorithm for the encryption key, followed by length, if applicable. "
-"Examples include rsa2048, cv25519 for ECC, or other ECC curves"
+"Please specify the algorithm for the additional encryption key, followed by length, if applicable.\n\n"
+"Supported algorithms and key lengths are: rsa<1024-4096>, elg<1024-4096>, cv25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, and secp256k1"
 
 msgid "ENCR_SUBKEY_EXPIRY_TITLE"
 msgstr "Additional Encryption Subkey Expiration"
@@ -98,8 +98,8 @@ msgstr "Additional Signing Subkey Algorithm"
 
 msgid "SIGN_SUBKEY_TEXT"
 msgstr ""
-"Please specify the algorithm for the signing subkey, followed by length, if applicable. "
-"Examples include rsa2048, ed25519 for ECC, or other ECC curves."
+"Please specify the algorithm for the additional signing subkey, followed by the desired key length, if applicable.\n\n"
+"Supported algorithms and key lengths are: dsa<768-3072>, rsa<1024-4096>, ed25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, secp256k1"
 
 msgid "SIGN_SUBKEY_EXPIRY_TITLE"
 msgstr "Additional Signing Subkey Expiration"
@@ -115,8 +115,8 @@ msgstr "Authentication Subkey Algorithm"
 
 msgid "AUTH_SUBKEY_TEXT"
 msgstr ""
-"Please specify the algorithm for the authentication subkey, followed by length, if applicable. "
-"Examples include rsa2048, ed25519 for ECC, or other ECC curves"
+"Please specify the algorithm for the authentication subkey, followed by the desired key length, if applicable.\n\n"
+"Supported algorithms and key lengths are: dsa<768-3072>, rsa<1024-4096>, ed25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, and secp256k1"
 
 msgid "AUTH_SUBKEY_EXPIRY_TITLE"
 msgstr "Authentication Subkey Expiration"
@@ -242,3 +242,35 @@ msgstr "Verify New Reset Code"
 
 msgid "RESET_CODE_CONF_TEXT"
 msgstr "Please re-enter the new Reset Code"
+
+## Devices
+
+msgid "GPG_HOME_DISK_TITLE"
+msgstr "GnuPG Home Directory"
+
+msgid "GPG_HOME_DISK_TEXT"
+msgstr "Select the USB memory device for the GnuPG home directory to point to:"
+
+msgid "BACKUP_DISK_TITLE"
+msgstr "Backup Drive"
+
+msgid "BACKUP_DISK_TEXT"
+msgstr "Select the USB memory device to use as a backup for your keyring:"
+
+msgid "PARTITION_CONFIRM_TITLE"
+msgstr "Confirm Partition Disk"
+
+msgid "PARTITION_CONFIRM_TEXT"
+msgstr "Do you really want to partition the selected disk(s)? Please note that all data on the following disks will be permanently erased:"
+
+msgid "RAID_MECHANISM_TITLE"
+msgstr "RAID Mechanism"
+
+msgid "RAID_MECHANISM_TEXT"
+msgstr "Please specify the RAID mechanism" 
+
+msgid "RAID_DEVICES_TITLE"
+msgstr "Raid Devices"
+
+msgid "RAID_DEVICES_TEXT"
+msgstr "Please specify at least two devices to partition as RAID 1"
