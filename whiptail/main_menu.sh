@@ -1,21 +1,26 @@
 #!/bin/bash
 #
-# main_menu.sh 
+# Runs the TUI scripts for selected menu item
 
 set -a
 set -e
 
-# keep this for testing
-. whiptail/whiptail_helper.sh
-. init.sh
+while true
+do
+	main_menu "task"
 
-whiptail_menu "task"
-
-case $task in
-	"Generate Primary and Subkeys") 
-		./whiptail/user_info.sh ;;
-	"Generate Only Primary Key") ;;
-	"Create an additional subkey") ;;
-	"Initialize a SmartCard") ;;
-	"Set Pins on SmartCard") ;;
-esac
+	case $task in
+		"Generate Primary and Subkeys") 
+			./whiptail/get_keys.sh ;;
+		"Generate Only Primary Key") ;;
+		"Select Disks")
+			./get_disks.sh ;;
+		"RAID a set of SD Cards")
+			./whiptail/raid_disks.sh ;;
+		"Add UID") 
+			;;
+		"Create an additional subkey") ;;
+		"Initialize a SmartCard") ;;
+		"Set Pins on SmartCard") ;;
+	esac
+done
