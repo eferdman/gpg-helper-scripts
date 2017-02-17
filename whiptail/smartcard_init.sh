@@ -7,10 +7,6 @@
 set -a
 set -e
 
-# keep this for testing
-. init.sh
-. whiptail_helper.sh
-
 # Ask if the user will be using a smartcard
 if whiptail_yesno "SMARTCARD_YESNO_TEXT" "SMARTCARD_YESNO_TITLE"; then
 	

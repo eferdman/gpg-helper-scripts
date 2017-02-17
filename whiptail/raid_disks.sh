@@ -8,10 +8,6 @@
 # To run raid-devices:
 # create-raid $RAID_MECHANISM $RAID_DEVICES
 
-# keep this for testing
-. whiptail/whiptail_helper.sh
-. init.sh
-
 # Ask user to specify RAID mechanism md|btrfs
 whiptail_radio "RAID_MECHANISM" "md" "btrfs"
 
