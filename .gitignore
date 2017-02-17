@@ -1,2 +1,3 @@
 whiptail-test.sh
 device_list
+locale/en_US/LC_MESSAGES/ui-strings.mo
