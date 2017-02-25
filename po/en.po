@@ -1,3 +1,14 @@
+msgid "QUICK_GENERATE_TITLE"
+msgstr "Quick Generate Key"
+
+msgid "QUICK_GENERATE_TEXT"
+msgstr ""
+"This option creates the following:\n"
+"an RSA 4096 master key\n"
+"an RSA 2048 encryption subkey\n"
+"an RSA 2048 signing subkey\n"
+"You will be prompted for a UID and password"
+
 msgid "MASTER_KEY_ALGO_DEFAULT"
 msgstr "rsa4096"
 
@@ -44,7 +55,7 @@ msgstr ""
 "Please specify the algorithm for the primary key, followed by the desired key length, if applicable.\n\n"
 "Supported algorithms and key lengths are: dsa<768-3072>, rsa<1024-4096>, ed25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, secp256k1"
 
-msgid "MASTER_EXPIRY_TITLE"
+msgid "MASTER_KEY_EXPIRY_TITLE"
 msgstr "Primary Key Expiration"
 
 msgid "SUBKEY_ALGO_TITLE"
