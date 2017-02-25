@@ -14,6 +14,8 @@ msgfmt -o locale/en_US/LC_MESSAGES/ui-strings.mo po/en.po
 
 # source helper files
 . whiptail/whiptail_helper.sh
+. whiptail/prefs_helper.sh
+. gpg/defaults.sh
 
 # call the main menu
 . whiptail/main_menu.sh
