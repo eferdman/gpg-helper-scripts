@@ -5,4 +5,4 @@
 set -a
 set -e
 
-whiptail_input "ADD_UIDS" "ADD_UIDS_TEXT" "ADD_UIDS_TITLE"
+get_add_uids

@@ -5,29 +5,13 @@
 set -a
 set -e
 
-# UIDS
-whiptail_input "PRIMARY_UID" "PRIMARY_UID_TEXT" "PRIMARY_UID_TITLE" 
-whiptail_input "ADD_UIDS" "ADD_UIDS_TEXT" "ADD_UIDS_TITLE" 
+get_uids
 
-# MASTER KEY
-whiptail_input "MASTER_KEY_ALGO" "MASTER_KEY_ALGO_TEXT" "MASTER_KEY_ALGO_TITLE" "MASTER_KEY_ALGO_DEFAULT"
-whiptail_input "MASTER_EXPIRY" "EXPIRY_TEXT" "MASTER_EXPIRY_TITLE" "MASTER_EXPIRY_DEFAULT" 
+get_primary_key_prefs
 
-# SECONDARY KEY
-whiptail_input "SUBKEY_ALGO" "SUBKEY_ALGO_TEXT" "SUBKEY_ALGO_TITLE" "SUBKEY_ALGO_DEFAULT"
-whiptail_input "SUBKEY_EXPIRY" "EXPIRY_TEXT" "SUBKEY_EXPIRY_TITLE" "SUBKEY_EXPIRY_DEFAULT" 
+get_subkey_prefs
 
-# PASSWORD: Validate that password is 12 chars and confirm password
-while true
-do
-	while true
-	do
-		whiptail_password "PASSWORD" "PASSWORD_TEXT" "PASSWORD_TITLE"
-		[ ${#PASSWORD} -ge 12 ] && break
-	done
-	whiptail_password "CONF_PASSWORD" "CONF_PASSWORD_TEXT" "CONF_PASSWORD_TITLE"
-	[ $PASSWORD = $CONF_PASSWORD ] && break
-done
+get_password
 
 # ENCRYPTION SUBKEY
 if whiptail_yesno "ENCR_SUBKEY_YESNO_TEXT" "ENCR_SUBKEY_YESNO_TITLE"; then
@@ -46,3 +30,4 @@ if whiptail_yesno "AUTH_SUBKEY_YESNO_TEXT" "AUTH_SUBKEY_YESNO_TITLE"; then
 	whiptail_input "AUTH_SUBKEY" "AUTH_SUBKEY_TEXT" "AUTH_SUBKEY_TITLE" "SUBKEY_ALGO_DEFAULT"
 	whiptail_input "AUTH_SUBKEY_EXPIRY" "EXPIRY_TEXT" "AUTH_SUBKEY_EXPIRY_TITLE" "SUBKEY_EXPIRY_DEFAULT"
 fi
+	
