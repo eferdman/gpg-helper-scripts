@@ -58,6 +58,8 @@ msgstr ""
 msgid "MASTER_KEY_EXPIRY_TITLE"
 msgstr "Primary Key Expiration"
 
+# Subkey Strings
+
 msgid "SUBKEY_ALGO_TITLE"
 msgstr "Encryption Subkey Algorithm"
 
@@ -68,6 +70,44 @@ msgstr ""
 
 msgid "SUBKEY_EXPIRY_TITLE"
 msgstr "Subkey Expiration"
+
+msgid "CUSTOM_SUBKEY_ALGO_TITLE"
+msgstr "Subkey Algorithm"
+
+msgid "CUSTOM_SUBKEY_ALGO_TEXT"
+msgstr "Please specify the algorithm for the subkey you want:"
+
+msgid "DSA_SUBKEY_LENGTH_TITLE"
+msgstr "Subkey Length"
+
+msgid "DSA_SUBKEY_LENGTH_TEXT"
+msgstr "Please specify a length for your subkey between 768 - 3072 bits."
+
+msgid "RSA_SUBKEY_LENGTH_TITLE"
+msgstr "Subkey Length"
+
+msgid "RSA_SUBKEY_LENGTH_TEXT"
+msgstr "Please specify a length for your subkey between 1024 and 4096 bits."
+
+msgid "ELG_SUBKEY_LENGTH_TITLE"
+msgstr "Subkey Length"
+
+msgid "ELG_SUBKEY_LENGTH_TEXT"
+msgstr "Please specify a length for your subkey between 1024 and 4096 bits."
+
+# Usage Strings
+
+msgid "SUBKEY_USAGE_TITLE"
+msgstr "Subkey Usage"
+
+msgid "SUBKEY_USAGE_TEXT"
+msgstr "Please specify the usage(s) for your subkey:"
+
+msgid "ECC_SUBKEY_ALGO_TITLE"
+msgstr "Choose Elliptic Curve"
+
+msgid "ECC_SUBKEY_ALGO_TEXT"
+msgstr "Please select which elliptic curve you want:"
 
 msgid "PASSWORD_TITLE"
 msgstr "Password"
