@@ -19,11 +19,22 @@ DIMENS="15 78"
 #########################################
 whiptail_input() {
 	__resultvar=$1
-	if [[ ! -z $4 ]]; then
-		result=$(whiptail --inputbox "$(gettext $2)" $DIMENS "$(gettext $4)" --title "$(gettext $3)" 3>&1 1>&2 2>&3)
+	default=$1_DEFAULT
+	if [[ -z $2 ]]; then
+		default=$1_DEFAULT
 	else
-		result=$(whiptail --inputbox "$(gettext $2)" $DIMENS --title "$(gettext $3)" 3>&1 1>&2 2>&3)
+		default=$2
 	fi
+	result=$(whiptail --inputbox "$(gettext $1_TEXT)" \
+	$DIMENS ${!default} --title "$(gettext $1_TITLE)" 3>&1 1>&2 2>&3)
+	eval $__resultvar="'$result'"
+}
+
+get_expiry() {
+	__resultvar=$1
+	default=$1_DEFAULT
+	result=$(whiptail --inputbox "$(gettext "EXPIRY_TEXT")" $DIMENS \
+	${!default} --title "$(gettext $1_TITLE)" 3>&1 1>&2 2>&3)
 	eval $__resultvar="'$result'"
 }
 
@@ -48,7 +59,7 @@ whiptail_yesno() {
 #########################################
 whiptail_password() {
 	__resultvar=$1	
-	result=$(whiptail --passwordbox "$(gettext $2)" $DIMENS --title "$(gettext $3)" 3>&1 1>&2 2>&3)
+	result=$(whiptail --passwordbox "$(gettext $1_TEXT)" $DIMENS --title "$(gettext $1_TITLE)" 3>&1 1>&2 2>&3)
 	eval $__resultvar="'$result'"
 }
 
@@ -106,7 +117,6 @@ whiptail_raid_disks() {
 	eval $__resultvar=$raid_disks
 }
 
-
 #########################################
 # Stores user's selection from whiptail --radio dialog
 # Arguments:
@@ -115,7 +125,28 @@ whiptail_raid_disks() {
 #########################################
 whiptail_radio() {
 	__resultvar=$1
-	ws="whiptail --title \"$(gettext $1_TITLE)\" --radiolist \"$(gettext $1_TEXT)\" 15 80 5"
+	ws="whiptail --title \"$(gettext $1_TITLE)\" --radiolist \"$(gettext $1_TEXT)\" 15 80 10"
+	shift
+	for option in "$@"
+	do
+		if [ "$option" = $1 ]; then
+			ws="$ws \"$option\" \"\" ON"
+		else
+			ws="$ws \"$option\" \"\" OFF"
+		fi
+	done
+	
+	# append redirection
+	ws="$ws 3>&1 1>&2 2>&3"
+
+	# store the user's selection as variable
+	selection="'$(eval $ws)'"
+	eval $__resultvar=$selection
+}
+
+whiptail_checkbox() {
+	__resultvar=$1
+	ws="whiptail --title \"$(gettext $1_TITLE)\" --checklist \"$(gettext $1_TEXT)\" 15 80 3"
 	shift
 	for option in "$@"
 	do
@@ -138,18 +169,20 @@ whiptail_radio() {
 #########################################
 # Main Menu
 # Arguments:
-# 	$1 the name for the variable
+# 	$1 the name for the variable: "task"
 #########################################
 main_menu() {
 	__resultvar=$1	
 	result=$(whiptail --title "PGP Clean Room Main Menu" --menu \
 		"		
-				Please choose a task from the list below:" 20 80 10 \
+				Please choose a task from the list below:" 20 80 12 \
 "RAID a set of SD Cards" "" \
-"Generate Primary and Subkeys" "(Default)" \
-"Generate Primary Key" "(Custom)" \
-"Create an Additional Subkey" "(Custom)" \
-"Add another UID" "" \
+"Generate Primary and Subkeys (Default)" "" \
+"Generate Primary and Subkeys (Custom)" "" \
+"Generate Primary and Subkeys (Expert)" "" \
+"Generate Primary Key (Custom)" "" \
+"Add Subkey (Custom)" "" \
+"Add UID" "" \
 "Initialize a SmartCard" "" \
 "Set Pins on SmartCard" "" \
 "Rotate Subkey" "" \
@@ -158,6 +191,32 @@ main_menu() {
 		
 	# store user's selection as variable
 	eval $__resultvar="'$result'"
+
+	case $task in
+		"RAID a set of SD Cards")
+			. whiptail/raid_disks.sh ;;
+		"Generate Primary and Subkeys (Default)")
+			. whiptail/quick_get_keys.sh 
+			#./gpg/quick_gen_key.sh 
+			;;
+		"Generate Primary and Subkeys (Custom)") 
+			. whiptail/get_keys.sh ;;
+		"Generate Primary and Subkeys (Expert)")
+			;;
+		"Generate Only Primary Key (Custom)")
+			. whiptail/get_primary_key.sh ;;
+		"Add Subkey (Custom)")
+			. whiptail/get_subkey.sh ;;
+		"Select Disks")
+			. get_disks.sh ;;
+		"Add UID") ;;
+		"Initialize a SmartCard")
+			. whiptail/smartcard_init.sh ;;
+		"Set Pins on SmartCard") ;;
+		"Rotate Subkey") ;;
+		"Sign (Certify) Keys") ;;
+		"Backup Keyring to Disk") ;;
+	esac
 }
 
 # dummy gauge
