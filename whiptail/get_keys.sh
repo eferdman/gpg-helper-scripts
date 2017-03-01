@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# user-info.sh gathers the user's uids and key preferences
+# get-keys.sh gathers the user's uids and key preferences
 
 set -a
 set -e
@@ -13,21 +13,4 @@ get_subkey_prefs
 
 get_password
 
-# ENCRYPTION SUBKEY
-if whiptail_yesno "ENCR_SUBKEY_YESNO_TEXT" "ENCR_SUBKEY_YESNO_TITLE"; then
-	whiptail_input "ENCR_SUBKEY" "ENCR_SUBKEY_TEXT" "ENCR_SUBKEY_TITLE" "SUBKEY_ALGO_DEFAULT"
-	whiptail_input "ENCR_SUBKEY_EXPIRY" "EXPIRY_TEXT" "ENCR_SUBKEY_EXPIRY_TITLE" "SUBKEY_EXPIRY_DEFAULT"
-fi
-
-# SIGNING SUBKEY
-if whiptail_yesno "SIGN_SUBKEY_YESNO_TEXT" "SIGN_SUBKEY_YESNO_TITLE"; then
-	whiptail_input "SIGN_SUBKEY" "SIGN_SUBKEY_TEXT" "SIGN_SUBKEY_TITLE" "SUBKEY_ALGO_DEFAULT"
-	whiptail_input "SIGN_SUBKEY_EXPIRY" "EXPIRY_TEXT" "SIGN_SUBKEY_EXPIRY_TITLE" "SUBKEY_EXPIRY_DEFAULT"
-fi
-
-# AUTHENTICATION SUBKEY
-if whiptail_yesno "AUTH_SUBKEY_YESNO_TEXT" "AUTH_SUBKEY_YESNO_TITLE"; then
-	whiptail_input "AUTH_SUBKEY" "AUTH_SUBKEY_TEXT" "AUTH_SUBKEY_TITLE" "SUBKEY_ALGO_DEFAULT"
-	whiptail_input "AUTH_SUBKEY_EXPIRY" "EXPIRY_TEXT" "AUTH_SUBKEY_EXPIRY_TITLE" "SUBKEY_EXPIRY_DEFAULT"
-fi
 	
