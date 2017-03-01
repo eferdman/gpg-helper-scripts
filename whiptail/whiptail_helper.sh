@@ -125,7 +125,7 @@ whiptail_raid_disks() {
 #########################################
 whiptail_radio() {
 	__resultvar=$1
-	ws="whiptail --title \"$(gettext $1_TITLE)\" --radiolist \"$(gettext $1_TEXT)\" 15 80 10"
+	ws="whiptail --title \"$(gettext $1_TITLE)\" --radiolist \"$(gettext $1_TEXT)\" 20 80 10"
 	shift
 	for option in "$@"
 	do
@@ -179,8 +179,7 @@ main_menu() {
 "RAID a set of SD Cards" "" \
 "Generate Primary and Subkeys (Default)" "" \
 "Generate Primary and Subkeys (Custom)" "" \
-"Generate Primary and Subkeys (Expert)" "" \
-"Generate Primary Key (Custom)" "" \
+"Generate Primary Key Only (Custom)" "" \
 "Add Subkey (Custom)" "" \
 "Add UID" "" \
 "Initialize a SmartCard" "" \
@@ -197,19 +196,24 @@ main_menu() {
 			. whiptail/raid_disks.sh ;;
 		"Generate Primary and Subkeys (Default)")
 			. whiptail/quick_get_keys.sh 
-			#./gpg/quick_gen_key.sh 
+			# ./gpg/quick_gen_key.sh 
 			;;
 		"Generate Primary and Subkeys (Custom)") 
-			. whiptail/get_keys.sh ;;
-		"Generate Primary and Subkeys (Expert)")
+			. whiptail/get_keys.sh
+			# ./gpg/gen_keys.sh
 			;;
-		"Generate Only Primary Key (Custom)")
-			. whiptail/get_primary_key.sh ;;
+		"Generate Primary Key Only (Custom)")
+			. whiptail/get_primary_key.sh 
+			# ./gpg/gen_primary_key.sh $MASTER_KEY_USAGE
+			;;
 		"Add Subkey (Custom)")
-			. whiptail/get_subkey.sh ;;
-		"Select Disks")
-			. get_disks.sh ;;
-		"Add UID") ;;
+			. whiptail/get_subkey.sh
+			# gpg/gen_custom_subkey.sh 
+			;;
+		"Add UID")
+			. whiptail/get_uids.sh
+			# python add_uids.py
+			;;
 		"Initialize a SmartCard")
 			. whiptail/smartcard_init.sh ;;
 		"Set Pins on SmartCard") ;;
