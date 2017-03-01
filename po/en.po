@@ -52,8 +52,13 @@ msgstr "Primary Key Algorithm"
 
 msgid "MASTER_KEY_ALGO_TEXT"
 msgstr ""
-"Please specify the algorithm for the primary key, followed by the desired key length, if applicable.\n\n"
-"Supported algorithms and key lengths are: dsa<768-3072>, rsa<1024-4096>, ed25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, secp256k1"
+"Please specify the algorithm for the primary key."
+
+msgid "MASTER_KEY_USAGE_TITLE"
+msgstr "Master Key Usage"
+
+msgid "MASTER_KEY_USAGE_TEXT"
+msgstr "Please specify the usage for your primary key."
 
 msgid "MASTER_KEY_EXPIRY_TITLE"
 msgstr "Primary Key Expiration"
@@ -64,9 +69,7 @@ msgid "SUBKEY_ALGO_TITLE"
 msgstr "Encryption Subkey Algorithm"
 
 msgid "SUBKEY_ALGO_TEXT"
-msgstr ""
-"Please specify the algorithm for the secondary (encryption) key, followed by length, if applicable.\n\n"
-"Supported algorithms and key lengths are: rsa<1024-4096>, elg<1024-4096>,  cv25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, and secp256k1"
+msgstr "Please specify the algorithm for the subkey you want:"
 
 msgid "SUBKEY_EXPIRY_TITLE"
 msgstr "Subkey Expiration"
@@ -81,21 +84,19 @@ msgid "DSA_SUBKEY_LENGTH_TITLE"
 msgstr "Subkey Length"
 
 msgid "DSA_SUBKEY_LENGTH_TEXT"
-msgstr "Please specify a length for your subkey between 768 - 3072 bits."
+msgstr "Please specify a length for your subkey between 2048 - 3072 bits."
 
 msgid "RSA_SUBKEY_LENGTH_TITLE"
 msgstr "Subkey Length"
 
 msgid "RSA_SUBKEY_LENGTH_TEXT"
-msgstr "Please specify a length for your subkey between 1024 and 4096 bits."
+msgstr "Please specify a length for your subkey between 2048 and 4096 bits."
 
 msgid "ELG_SUBKEY_LENGTH_TITLE"
 msgstr "Subkey Length"
 
 msgid "ELG_SUBKEY_LENGTH_TEXT"
-msgstr "Please specify a length for your subkey between 1024 and 4096 bits."
-
-# Usage Strings
+msgstr "Please specify a length for your subkey between 2048 and 4096 bits."
 
 msgid "SUBKEY_USAGE_TITLE"
 msgstr "Subkey Usage"
@@ -103,10 +104,10 @@ msgstr "Subkey Usage"
 msgid "SUBKEY_USAGE_TEXT"
 msgstr "Please specify the usage(s) for your subkey:"
 
-msgid "ECC_SUBKEY_ALGO_TITLE"
+msgid "ECC_CURVE_TITLE"
 msgstr "Choose Elliptic Curve"
 
-msgid "ECC_SUBKEY_ALGO_TEXT"
+msgid "ECC_CURVE_TEXT"
 msgstr "Please select which elliptic curve you want:"
 
 msgid "PASSWORD_TITLE"
@@ -120,57 +121,6 @@ msgstr "Password Confirmation"
 
 msgid "CONF_PASSWORD_TEXT"
 msgstr "Please Re-enter Your Password for Your Master Key"
-
-msgid "ENCR_SUBKEY_YESNO_TITLE"
-msgstr "Additional Encryption Subkey"
-
-msgid "ENCR_SUBKEY_YESNO_TEXT"
-msgstr "Would you like to add an additional encryption subkey?"
-
-msgid "ENCR_SUBKEY_TITLE"
-msgstr "Additional Encryption Subkey Algorithm"
-
-msgid "ENCR_SUBKEY_TEXT"
-msgstr ""
-"Please specify the algorithm for the additional encryption key, followed by length, if applicable.\n\n"
-"Supported algorithms and key lengths are: rsa<1024-4096>, elg<1024-4096>, cv25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, and secp256k1"
-
-msgid "ENCR_SUBKEY_EXPIRY_TITLE"
-msgstr "Additional Encryption Subkey Expiration"
-
-msgid "SIGN_SUBKEY_YESNO_TITLE"
-msgstr "Additional Signing Subkey"
-
-msgid "SIGN_SUBKEY_YESNO_TEXT"
-msgstr "Would you like to add an additional signing subkey?"
-
-msgid "SIGN_SUBKEY_TITLE"
-msgstr "Additional Signing Subkey Algorithm"
-
-msgid "SIGN_SUBKEY_TEXT"
-msgstr ""
-"Please specify the algorithm for the additional signing subkey, followed by the desired key length, if applicable.\n\n"
-"Supported algorithms and key lengths are: dsa<768-3072>, rsa<1024-4096>, ed25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, secp256k1"
-
-msgid "SIGN_SUBKEY_EXPIRY_TITLE"
-msgstr "Additional Signing Subkey Expiration"
-
-msgid "AUTH_SUBKEY_YESNO_TITLE"
-msgstr "Authentication Subkey"
-
-msgid "AUTH_SUBKEY_YESNO_TEXT"
-msgstr "Would you like to add an authentication subkey?"
-
-msgid "AUTH_SUBKEY_TITLE"
-msgstr "Authentication Subkey Algorithm"
-
-msgid "AUTH_SUBKEY_TEXT"
-msgstr ""
-"Please specify the algorithm for the authentication subkey, followed by the desired key length, if applicable.\n\n"
-"Supported algorithms and key lengths are: dsa<768-3072>, rsa<1024-4096>, ed25519, nistp256, nistp384, nistp521, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, and secp256k1"
-
-msgid "AUTH_SUBKEY_EXPIRY_TITLE"
-msgstr "Authentication Subkey Expiration"
 
 # SmartCard Strings
 
